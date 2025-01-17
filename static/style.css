@@ -1,0 +1,276 @@
+html {
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -ms-overflow-style: scrollbar;
+  -webkit-tap-highlight-color: transparent
+}
+
+body {
+  background-color: #eeeeee;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto
+}
+
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 2px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out
+}
+
+button,input,optgroup,select,textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #0069d9;
+  border-color: #0062cc
+}
+
+.btn-primary.focus,.btn-primary:focus {
+  box-shadow: 0 0 0 .2rem rgba(0,123,255,.5)
+}
+
+.btn-primary.disabled,.btn-primary:disabled {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff
+}
+
+.btn-primary:not(:disabled):not(.disabled).active,.btn-primary:not(:disabled):not(.disabled):active,.show>.btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #0062cc;
+  border-color: #005cbf
+}
+
+.btn-primary:not(:disabled):not(.disabled).active:focus,.btn-primary:not(:disabled):not(.disabled):active:focus,.show>.btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 .2rem rgba(0,123,255,.5)
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545
+}
+
+.btn-danger:hover {
+  color: #fff;
+  background-color: #c82333;
+  border-color: #bd2130
+}
+
+.btn-danger.focus,.btn-danger:focus {
+  box-shadow: 0 0 0 .2rem rgba(220,53,69,.5)
+}
+
+.btn-danger.disabled,.btn-danger:disabled {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545
+}
+
+.btn-danger:not(:disabled):not(.disabled).active,.btn-danger:not(:disabled):not(.disabled):active,.show>.btn-danger.dropdown-toggle {
+  color: #fff;
+  background-color: #bd2130;
+  border-color: #b21f2d
+}
+
+.btn-danger:not(:disabled):not(.disabled).active:focus,.btn-danger:not(:disabled):not(.disabled):active:focus,.show>.btn-danger.dropdown-toggle:focus {
+  box-shadow: 0 0 0 .2rem rgba(220,53,69,.5)
+}
+
+input[type=checkbox],input[type=radio] {
+  box-sizing: border-box;
+  padding: 10
+}
+
+.xcollapsing {
+  transition: none !important;
+}
+
+.blue {
+  color: #007bff;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  text-align: left;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.noblue {
+  color: #212529;
+  font-weight: normal;
+  display: inline-block;
+  font-size: 16px;
+  text-align: left;
+  cursor: default;
+}
+
+.ptr {
+	cursor: pointer;
+}
+
+.noptr {
+	cursor: default;
+}
+
+.infos:hover {
+	color: #007bff;
+	cursor: pointer;
+}
+
+.red {
+  color: red;
+}
+
+.orange {
+  color: orange;
+}
+
+.low {
+  background-color: #cccccc !important;
+}
+
+.proto {
+  text-align: left;
+  font-size: 16px;
+}
+
+.ww {
+    word-wrap: break-word;
+    text-align: left;
+    font-size: 14px;
+}
+
+.nofocus:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.off {
+	font-size:12px;
+	font-style: italic;
+}
+
+.small {
+	font-size:14px;
+	padding: 0px;
+}
+
+.pl {
+  color: #212529;
+  font-size: 14px;
+}
+
+.pl a {
+  text-decoration: none;
+}
+
+.ho:hover {
+	background-color: #B8DAFF;
+}
+
+[data-toggle="collapse"].collapsed .if-not-collapsed {
+  display: none;
+}
+
+[data-toggle="collapse"]:not(.collapsed) .if-collapsed {
+  display: none;
+}
+
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+ outline:none; box-shadow:none;
+}
+
+/* Styles for picture in hint
+https://www.geeksforgeeks.org/how-to-make-a-tooltip-with-an-image/
+ */
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+  margin-right: 20px;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: auto;
+  background-color: #dddddd;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.5s;
+  top: 100%;
+  left: 200%;
+  transform: translateX(-50%);
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip.top .tooltiptext {
+  bottom: 100%;
+  top: auto;
+}
+
+.tooltip.bottom .tooltiptext {
+  top: 100%;
+  bottom: auto;
+}

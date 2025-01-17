@@ -1,0 +1,6 @@
+__pycache__
+.venv
+.txts/*
+.pcaps/*
+static/bootstrap.min.css
+1.txt

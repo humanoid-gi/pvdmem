@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Juniper MX packet-via-dmem converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='shark_icon.png') }}">
+
+</head>
+<body>
+    <div id="container" class="container" style="max-width:1170px">
+    <h1 class="h3 mb-3 font-weight-normal">
+        <a style="text-decoration: none; color: black" href="./">Juniper MX packet-via-dmem converter
+        </a>
+    </h1>
+    
+    <p style="font-family: Consolas, Monaco, monospace; font-size:14px;">
+        <b>test jnh &lt;PFE#&gt; packet-via-dmem enable </b><span style="color: grey;">&lt- reserve memory for captured data </span><br>
+        <b>test jnh &lt;PFE#&gt; packet-via-dmem capture 0x3 0a0000ff </b><span style="color: grey;">&lt- start capture with trigger "0a0000ff" (can be any HEX pattern from packet).</span><br>
+        <b>test jnh &lt;PFE#&gt; packet-via-dmem capture 0x0 </b><span style="color: grey;">&lt- stop capture</span><br>
+        <b>test jnh &lt;PFE#&gt; packet-via-dmem decode <span style="color: grey;">&lt- dump result and paste below</span><br>
+        test jnh &lt;PFE#&gt; packet-via-dmem disable </b><span style="color: grey;">&lt- release memory</span><br><br>
+    </p>
+
+        <form method="post">   
+            <!-- Text area-->     
+            <textarea name="pcap_text"
+                    class="form-control rounded-0" style="font-family: Consolas, Monaco, monospace; font-size:14px";
+                    placeholder="Paste packet-via-dmem dump here (MAX 10MB)"
+                    rows="17"
+                    >{{ form_text }}</textarea>
+            
+            <br>
+            <!--Hint with LU direction-->
+            <div class="tooltip top">
+                <b>Choose parse direction</b>
+                <span class="tooltiptext">
+                    <img src="static/tolu-fromlu.png" style="width: 620px; height: auto;">
+                </span>
+            </div>
+            <br>
+            <!-- Parse direction radio buttons-->
+            <input type="radio" name="parse_direction" id="tofromlu" value="Both" checked="checked">Both&emsp;</input>
+            <input type="radio" name="parse_direction" id="tolu" value="toLU">To LUCHIP&emsp; </input>
+            <input type="radio" name="parse_direction" id="fromlu" value="fromLU"> From LUCHIP </input>
+            <br><br>
+            
+            <!-- Main buttons-->
+            <input type="submit" class="btn btn-primary" value="Generate PCAP" name="create_pcap"/>
+            <input type="submit" class="btn btn-danger" value="Clear" name="clear_text"/>
+            <br>
+        
+        </form>
+    </div>
+    <br>
+    <br>
+    <div id="container" class="container" style="max-width:1170px">
+        <form method="post">        
+            <textarea readonly name="log_text"
+                    class="form-control rounded-0" style="background-color:#eeeeee; font-family: Consolas, Monaco, monospace; font-size:14px"
+                    rows="7"
+                    >{{ log_text }}</textarea>
+            <br>     
+        </form>
+    </div>
+
+    
+</body>
+</html>
