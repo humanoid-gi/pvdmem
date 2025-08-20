@@ -11,11 +11,12 @@ fake_eth_header = "0000face00000000face0000"
 
 
 parcel_regexp = r'\n ([0-9a-f]{2,})'
-packet_id_regexp = r'^(0x[0-9a-f]{3})'
+packet_id_regexp = r'^(0x[0-9a-f]{8})'
 packet_direction_regexp = r'\n(Dispatch|Reorder)'  # Dispatch: to LU / Reorder: from LU
 pfenum_regexp = r'PfeNum (\d+)'
 ptype_regexp = r'[\n ]PType (\S+)'
 lu2lu_regexp = r'Lu2Lu_type (\S+)'
+ddos_proto_regexp = r'DdosProto (\S+)'
 
 
 def parse_raw_dump(dump):
@@ -27,6 +28,7 @@ def parse_raw_dump(dump):
         parcel = re.findall(parcel_regexp, packet, re.DOTALL)
         ptype = re.search(ptype_regexp, packet, re.DOTALL)
         lu2lu = re.search(lu2lu_regexp, packet, re.DOTALL)
+        ddosp = re.search(ddos_proto_regexp, packet, re.DOTALL)
 
         # Special marker for parcels with "Lu2Lu_type LU_STEERING"
         lu2lu_str = ''
@@ -40,7 +42,8 @@ def parse_raw_dump(dump):
                                                                     .replace("Reorder", "fromLU"),
                               "parcel": "".join(parcel),
                               "ptype": ptype,
-                              "lu2lu": lu2lu_str
+                              "lu2lu": lu2lu_str,
+                              "ddosp": ddosp
                               })
     
     return dump_list
@@ -52,6 +55,7 @@ def make_clear_parsels(dump, clearify=True, toLU=True, fromLU=True):
 
     cleared_list = []
     for packet in dump:
+        
         cleared_parcel = packet['parcel']
 
         if clearify:
@@ -60,12 +64,15 @@ def make_clear_parsels(dump, clearify=True, toLU=True, fromLU=True):
             if packet['ptype']:
                 if packet['ptype'].group(1) == 'MPLS':
                     cleared_parcel = fake_eth_header + '8847' + packet['parcel']
-
-                elif packet['ptype'].group(1) == 'IPV4' and packet['direction'] == "toLU":
-                    cleared_parcel = fake_eth_header + '0800' + packet['parcel']
                 
+                elif packet['ptype'].group(1) == 'IPV4' and packet['ddosp']:
+                    cleared_parcel = packet['parcel']
+             
                 elif packet['ptype'].group(1) == 'IPV4' and packet['lu2lu'] ==  'LU_STEERING':
                     cleared_parcel = packet['parcel'][2::]
+                
+                elif packet['ptype'].group(1) == 'IPV4':
+                    cleared_parcel = fake_eth_header + '0800' + packet['parcel']
                 
                 elif packet['ptype'].group(1) == 'IPV6':
                     cleared_parcel = fake_eth_header + '86dd' + packet['parcel']

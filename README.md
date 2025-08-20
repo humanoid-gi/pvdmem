@@ -22,3 +22,7 @@ docker run -d --network=host --restart always pvdmem_app:v0.1
    test jnh <PFE#> packet-via-dmem decode
    test jnh <PFE#> packet-via-dmem disable
    ```
+
+### Notes
+- For parcels without Ethernet headear script adds fake header "0000.face.0000 0000.face.0000". text2pcap can't correctly convert parcel without it.
+- Tested on MX480 and MX104 with MQCHIP/XMCHIP.

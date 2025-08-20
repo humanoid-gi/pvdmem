@@ -3,4 +3,5 @@ __pycache__
 .txts/*
 .pcaps/*
 static/bootstrap.min.css
-1.txt
+*.txt
+
