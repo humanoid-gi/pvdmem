@@ -8,8 +8,8 @@ For generating pcap it uses text2pcap utility from [wireshark tools](https://git
 git clone https://github.com/humanoid-gi/pvdmem.git
 cd pvdmem
 
-docker build --progress=plain --network=host -t pvdmem_app:v0.1 .
-docker run -d --network=host --restart always pvdmem_app:v0.1
+docker build --progress=plain --network=host -t pvdmem_app:v0.2 .
+docker run -d --network=host --restart always pvdmem_app:v0.2
 
 http://<your_host>:5000/
 ```
